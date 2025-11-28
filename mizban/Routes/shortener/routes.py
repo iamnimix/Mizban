@@ -1,12 +1,18 @@
+import pathlib
+import sys
+
 from fastapi import APIRouter, Depends, Request, HTTPException, Path
 from fastapi.responses import RedirectResponse
 from typing import Annotated
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
-from Core.utils import generate_short_code
-from Core.dependencies import get_db
-from Core.models import URL
+ROOT_DIR = pathlib.Path(__file__).parent.parent.resolve()
+sys.path.append(str(ROOT_DIR))
+
+from mizban.Core.utils import generate_short_code
+from mizban.Core.dependencies import get_db
+from mizban.Core.models import URL
 from .schema import RequestUrl, ResponseUrl
 
 

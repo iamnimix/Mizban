@@ -1,7 +1,14 @@
+import pathlib
+import sys
+
 from fastapi import FastAPI
 
-from Routes.shortener.routes import router
-from Core.database import init_db
+
+ROOT_DIR = pathlib.Path(__file__).resolve()
+sys.path.append(str(ROOT_DIR))
+
+from .Routes.shortener.routes import router
+from .Core.database import init_db
 
 app = FastAPI()
 
